@@ -1,4 +1,6 @@
 let boardProgress = [];
+let isFirstPlayerTurn = true;
+let unclaimedCells = 225;
 
 // Function to create 15 rows
 function initTable() {
@@ -12,6 +14,7 @@ function initTable() {
             cell1.setAttribute('data-row', `${i}`)
             cell1.setAttribute('data-col', `${j}`)
             cell1.setAttribute('data-claimer', `${-1}`)
+            cell1.onclick = updateBoard
         }
 
     }
@@ -27,6 +30,11 @@ function initTable() {
 //     console.log(arr)
 // }
 
-
+function updateBoard(e) {
+    let col = e.target.getAttribute('data-col');
+    let row = e.target.getAttribute('data-row');
+    e.target.innerText = isFirstPlayerTurn ? 1 : 0;
+    boardProgress[row][col] = 69;
+}
 // Call createRows when the page loads
 window.onload = initTable;
