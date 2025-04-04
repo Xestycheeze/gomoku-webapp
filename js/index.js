@@ -1,4 +1,5 @@
 let boardProgress = [];
+let isFirstPlayerTurn = true; // Gomoku is a 2-player game. Use boolean to indicate turns
 
 // Function to create 15 rows
 function initTable() {
@@ -12,6 +13,7 @@ function initTable() {
             cell1.setAttribute('data-row', `${i}`)
             cell1.setAttribute('data-col', `${j}`)
             cell1.setAttribute('data-claimer', `${-1}`)
+            cell1.onclick = updateBoard
         }
 
     }
@@ -27,6 +29,15 @@ function initTable() {
 //     console.log(arr)
 // }
 
-
+function updateBoard(e) {
+    if (+e.target.innerText === -1){ // unary plus operator to cast string to int
+        console.log(e.target.innerText);
+        let col = e.target.getAttribute('data-col');
+        let row = e.target.getAttribute('data-row');
+        e.target.innerText = isFirstPlayerTurn ? 1 : 0;
+        boardProgress[row][col] = isFirstPlayerTurn ? 1 : 0;
+        isFirstPlayerTurn = !isFirstPlayerTurn;
+    }
+}
 // Call createRows when the page loads
 window.onload = initTable;
