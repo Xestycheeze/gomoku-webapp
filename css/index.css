@@ -1,0 +1,21 @@
+/* Styling the buttons inside the table */
+.cell-button {
+    width: 40px;
+    height: 40px;
+    font-size: 0px;
+    border: 2px solid #333;
+    border-radius: 20px;
+    color: #333;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.cell-button:hover {
+    background-color: black;
+    opacity: 1;
+}
+
+.cell-button:active {
+    background-color: black;
+    opacity: 1;
+}
