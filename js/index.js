@@ -1,6 +1,6 @@
 let isFirstPlayerTurn = true;
 let boardProgress = [];
-const test = document.documentElement;
+const rootVariable = document.documentElement;
 
 function initTable() {
     const tableBody = document.getElementById('myTable').getElementsByTagName('tbody')[0];
@@ -36,9 +36,9 @@ function updateBoard(e) {
         boardProgress[row][col] = isFirstPlayerTurn ? 1 : 0;
 
         if (isFirstPlayerTurn) {
-            test.style.setProperty('--bg', '#FFFFFF')
+            rootVariable.style.setProperty('--bg', '#FFFFFF')
         } else {
-            test.style.setProperty('--bg', '#000000')
+            rootVariable.style.setProperty('--bg', '#000000')
         }
 
         if (isFirstPlayerTurn) {
