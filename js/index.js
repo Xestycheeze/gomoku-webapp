@@ -13,11 +13,18 @@ function initTable() {
         const newRow = tableBody.insertRow();
         for (let j = 0; j < boardWidth; j++) {
             const cell1 = newRow.insertCell(-1);
-            cell1.innerHTML = `-1`;
-            cell1.setAttribute('data-row', `${i}`)
-            cell1.setAttribute('data-col', `${j}`)
-            cell1.setAttribute('data-claimer', `${-1}`)
-            cell1.onclick = updateBoard;
+
+            // Create a button element
+            const button = document.createElement("button");
+            button.classList.add("cell-button"); // Add a CSS class for styling
+            button.innerText = "-1"; // Set initial text for the button
+            button.setAttribute('data-row', `${i}`);
+            button.setAttribute('data-col', `${j}`);
+            button.setAttribute('data-claimer', `${-1}`);
+            button.onclick = updateBoard; // Attach the click event handler
+
+            // Append the button to the cell
+            cell1.appendChild(button);
         }
 
     }
@@ -84,7 +91,7 @@ function spanCount(arr, index){
     const leftRangeToCheck = (index - (lengthCondition - 1)) <= 0 ? 0 : (index - lengthCondition);
     let rightRange = 0;
     let leftRange = 0;
-    // count the consecutive stones on the left
+    // count the consecutive stones on the right
     for (let i = index; i < rightRangeToCheck; i++){
         if (arr[i] !== -1 && arr[i] === arr[i+1]){
             rightRange++;
@@ -130,12 +137,14 @@ function checkVictory(row, col) {
     return false;
 }
 
+// Update the board when a cell button is clicked
 function updateBoard(e) {
-    if (+e.target.innerText === -1){ // unary plus operator to cast string to int
-        // console.log(e.target.innerText);
-        let col = +e.target.getAttribute('data-col'); // unary plus operator to cast string to int
-        let row = +e.target.getAttribute('data-row'); // unary plus operator to cast string to int
-        e.target.innerText = isFirstPlayerTurn ? 1 : 0;
+    const button = e.target;
+    if (+button.innerText === -1) { // unary plus operator to cast string to int
+        // console.log(button.innerText);
+        let col = +button.getAttribute('data-col'); // unary plus operator to cast string to int
+        let row = +button.getAttribute('data-row'); // unary plus operator to cast string to int
+        button.innerText = isFirstPlayerTurn ? 1 : 0;
         boardProgress[row][col] = isFirstPlayerTurn ? 1 : 0;
         if (checkVictory(row, col)) {
             if (isFirstPlayerTurn){
