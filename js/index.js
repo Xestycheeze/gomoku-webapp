@@ -4,7 +4,7 @@ const boardWidth = 15;
 let unclaimedCellCount = boardWidth * boardWidth;
 let isFirstPlayerTurn = true; // Gomoku is a 2-player game. Use boolean to indicate turns
 
-const test = document.documentElement;
+const rootVariable = document.documentElement;
 // Function to create 15 rows
 function initTable() {
     const tableBody = document.getElementById('myTable').getElementsByTagName('tbody')[0];
@@ -147,9 +147,9 @@ function updateBoard(e) {
         boardProgress[row][col] = isFirstPlayerTurn ? 1 : 0;
 
         if (isFirstPlayerTurn) {
-            test.style.setProperty('--bg', '#FFFFFF')
+            rootVariable.style.setProperty('--bg', '#FFFFFF')
         } else {
-            test.style.setProperty('--bg', '#000000')
+            rootVariable.style.setProperty('--bg', '#000000')
         }
 
         if (isFirstPlayerTurn) {
