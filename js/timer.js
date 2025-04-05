@@ -5,23 +5,22 @@ const rootVariable = document.documentElement;
 
 const p1Timer = document.getElementById('p1timer');
 const p2Timer = document.getElementById('p2timer');
+const playerTurnText = document.getElementById('playerTurn');
 
 let clock;
 function startClock() {
     startButton.disabled = true;
-    // clock = setInterval(countingDown, 1000);
     countingDown()
 }
 
 function countingDown() {
     if (isFirstPlayerTurn) {
+        playerTurnText.innerHTML = "Player 1's turn!"
         rootVariable.style.setProperty('--p1TimerBGcolor', 'black');
         rootVariable.style.setProperty('--p2TimerBGcolor', 'bisque');
         rootVariable.style.setProperty('--p1Bordercolor', 'red');
         rootVariable.style.setProperty('--p2Bordercolor', 'bisque');
         if (p1TimeLeft <= 0) {
-            clearInterval(clock);
-            p1Timer.innerHTML = '0:00';
             alert('Time out! Player 2 wins!')
         } else {
             p1TimeLeft--;
@@ -34,13 +33,12 @@ function countingDown() {
 
         clock = setTimeout(countingDown, 1000);
     } else {
+        playerTurnText.innerHTML = "Player 2's turn!"
         rootVariable.style.setProperty('--p2TimerBGcolor', 'white');
         rootVariable.style.setProperty('--p1TimerBGcolor', 'bisque');
         rootVariable.style.setProperty('--p2Bordercolor', 'red');
         rootVariable.style.setProperty('--p1Bordercolor', 'bisque');
         if (p2TimeLeft <= 0) {
-            clearInterval(clock);
-            p2Timer.innerHTML = '0:00';
             alert('Time out! Player 1 wins!')
         } else {
             p2TimeLeft--;
