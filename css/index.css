@@ -1,0 +1,21 @@
+:root {
+    --timerBGcolor: bisque;
+}
+
+p {
+    background: var(--timerBGcolor);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    font-size: 50px;
+    height: 50px;
+    width: 120px;
+    color: aqua;
+}
+
+#StartGame {
+    height: 50px;
+    width: 120px;
+    font-size: 20px;
+}

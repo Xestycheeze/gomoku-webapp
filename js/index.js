@@ -10,10 +10,10 @@ function initTable() {
         for (let j = 0; j < 15; j++) {
             const cell1 = newRow.insertCell(-1);
             cell1.innerHTML = `-1`;
-            cell1.setAttribute('data-row', `${i}`)
-            cell1.setAttribute('data-col', `${j}`)
-            cell1.setAttribute('data-claimer', `${-1}`)
-            cell1.onclick = updateBoard
+            cell1.setAttribute('data-row', `${i}`);
+            cell1.setAttribute('data-col', `${j}`);
+            cell1.setAttribute('data-claimer', `${-1}`);
+            cell1.onclick = updateBoard;
         }
 
     }
