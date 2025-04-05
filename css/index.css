@@ -5,16 +5,17 @@
     --border-color: black;
 }
 
-h1 {
-    text-align: center;
-}
+
 
 body {
     font-family:'Times New Roman', Times, serif;
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
 }
 
+h1 {
+    text-align: center;
+}
 #main {
     font-size: 17px;
     font-weight: bold;
@@ -24,6 +25,7 @@ body {
     align-items: center;
 }
 
+/* Board to simulate Gomoku board */
 #board {
     border: 5px solid var(--border-color);
     padding: 5px;
@@ -59,6 +61,7 @@ button {
     background-position: center;
 }
 
+/* Instructions text under table */
 #instructions {
     white-space: pre;
     padding-left: 0px;
