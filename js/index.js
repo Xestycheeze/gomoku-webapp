@@ -37,30 +37,43 @@ function findCellDiag(row, col){
     let diags = [];
     let rowOrigin = (row - col) > 0 ? (row - col) : 0; // assign 0 if the coordinate is in upper echelon or diag line
     let colOrigin = (row - col) > 0 ? 0 : (col - row); // assign 0 if the coordinate is in lower echelon
-
+    const newIndex = col - colOrigin; // the new index that point towards the same value as the cell originally selected on the full board
+    // console.log(row);
+    // console.log(rowOrigin);
+    // console.log(col);
+    // console.log(colOrigin);
+    // console.log(`new index: ${col - colOrigin}`);
     while (rowOrigin < boardProgress.length && (colOrigin < boardProgress[row].length)){
         diags.push(boardProgress[rowOrigin][colOrigin]);
         rowOrigin++;
         colOrigin++;
     }
-    return diags;
+    // console.log(diags);
+
+    return {newArray: diags, newIdx: newIndex};
 }
 
 function findCellAntiDiag(row, col){
     let antiDiags = [];
     let rowOrigin = ((row + col) >= boardProgress.length) ? ((row + col) - (boardProgress.length - 1)) : 0; // assign 0 if the coordinate is in upper anti-echelon
     let colOrigin = ((row + col) >= boardProgress.length) ? (boardProgress.length - 1) : (row + col); // assign with right most column if the coordinate is in lower anti-echelon
-
+    const newIndex = row - rowOrigin; // the new index that point towards the same value as the cell originally selected on the full board
+    // console.log(row);
+    // console.log(rowOrigin);
+    // console.log(col);
+    // console.log(colOrigin);
     while (rowOrigin < boardProgress.length && colOrigin >= 0){
         antiDiags.push(boardProgress[rowOrigin][colOrigin]);
         rowOrigin++;
         colOrigin--;
     }
-    console.log(antiDiags);
-    return antiDiags;
+    // console.log(antiDiags);
+    return {newArray: antiDiags, newIdx: newIndex};
 }
 
 function spanCount(arr, index){
+    // console.log("span " + arr);
+    // console.log("index " + index);
     // check input validity
     if (arr.length < 1 || index >= arr.length || index < 0){
         return
@@ -85,14 +98,18 @@ function spanCount(arr, index){
             break;
         }
     }
+    // console.log("right " + rightRange);
+    // console.log("left " + leftRange);
     return rightRange + leftRange + 1
 }
 
 function checkVictory(row, col) {
     const rowToBeChecked = boardProgress[row];
     const colToBeChecked = boardProgress.map(r => r[col]);
-    const diagToBeChecked = findCellDiag(row, col);
-    const antiDiagToBeChecked = findCellAntiDiag(row, col);
+    const diagPackageToBeChecked = findCellDiag(row, col);
+    const antiDiagPackageToBeChecked = findCellAntiDiag(row, col);
+    // console.log("diagToBeChecked " + diagToBeChecked.newArray);
+    // console.log("newCol" + diagToBeChecked.newIdx);
     // If the player produces a line of >5 while skipping producing a line of 5, that does not count as victory
     if (spanCount(rowToBeChecked, col) === lengthCondition){
         return true;
@@ -100,19 +117,20 @@ function checkVictory(row, col) {
     if (spanCount(colToBeChecked, row) === lengthCondition){
         return true;
     }
-    if (spanCount(diagToBeChecked, col) === lengthCondition){
+    // diagonals may be shorter than the board's number of columns
+    if (spanCount(diagPackageToBeChecked.newArray, diagPackageToBeChecked.newIdx) === lengthCondition){
         return true;
     }
-    if (spanCount(antiDiagToBeChecked, row) === lengthCondition){
+    // anti-diagonals may be shorter than the board's number of rows
+    if (spanCount(antiDiagPackageToBeChecked.newArray, antiDiagPackageToBeChecked.newIdx) === lengthCondition){
         return true;
     }
     return false;
-
 }
 
 function updateBoard(e) {
     if (+e.target.innerText === -1){ // unary plus operator to cast string to int
-        console.log(e.target.innerText);
+        // console.log(e.target.innerText);
         let col = +e.target.getAttribute('data-col'); // unary plus operator to cast string to int
         let row = +e.target.getAttribute('data-row'); // unary plus operator to cast string to int
         e.target.innerText = isFirstPlayerTurn ? 1 : 0;
