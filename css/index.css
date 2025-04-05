@@ -1,9 +1,10 @@
 :root {
-    --timerBGcolor: bisque;
+    --p1TimerBGcolor: bisque;
+    --p2TimerBGcolor: bisque;
 }
 
-p {
-    background: var(--timerBGcolor);
+#p1timer {
+    background: var(--p1TimerBGcolor);
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -12,6 +13,19 @@ p {
     height: 50px;
     width: 120px;
     color: aqua;
+}
+
+#p2timer {
+    background: var(--p2TimerBGcolor);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    font-size: 50px;
+    height: 50px;
+    width: 120px;
+    color: aqua;
+    border: 2px solid bisque;
 }
 
 #StartGame {

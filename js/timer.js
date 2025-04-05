@@ -1,6 +1,7 @@
 const startingMinutes = 1;
 let p1TimeLeft = startingMinutes * 60;
 let p2TimeLeft = startingMinutes * 60;
+const rootVariable = document.documentElement;
 
 const p1Timer = document.getElementById('p1timer');
 const p2Timer = document.getElementById('p2timer');
@@ -14,6 +15,9 @@ function startClock() {
 
 function countingDown() {
     if (isFirstPlayerTurn) {
+        rootVariable.style.setProperty('--p1TimerBGcolor', 'black');
+        rootVariable.style.setProperty('--p2TimerBGcolor', 'bisque');
+
         const minutes = Math.floor(p1TimeLeft / 60);
         let seconds = p1TimeLeft % 60;
     
@@ -29,6 +33,9 @@ function countingDown() {
             p1TimeLeft--;
         }
     } else {
+        rootVariable.style.setProperty('--p2TimerBGcolor', 'white');
+        rootVariable.style.setProperty('--p1TimerBGcolor', 'bisque');
+
         const minutes = Math.floor(p2TimeLeft / 60);
         let seconds = p2TimeLeft % 60;
     
