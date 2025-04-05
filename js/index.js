@@ -36,9 +36,9 @@ function updateBoard(e) {
         boardProgress[row][col] = isFirstPlayerTurn ? 1 : 0;
 
         if (isFirstPlayerTurn) {
-            rootVariable.style.setProperty('--bg', '#FFFFFF')
+            rootVariable.style.setProperty('--hover-color', '#FFFFFF')
         } else {
-            rootVariable.style.setProperty('--bg', '#000000')
+            rootVariable.style.setProperty('--hover-color', '#000000')
         }
 
         if (isFirstPlayerTurn) {
