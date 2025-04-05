@@ -15,7 +15,8 @@ button {
 
 .cell-button:hover {
     background-color: var(--bg);
-    opacity: 1;
+    opacity: 50%;
+    border: 2px solid aqua;
 }
 
 #myTable {
