@@ -1,3 +1,4 @@
+/* Global variables for default colors */
 :root {
     --hover-color: black;
     --board-color: bisque;
@@ -7,6 +8,7 @@
 h1 {
     text-align: center;
 }
+
 body {
     font-family:'Times New Roman', Times, serif;
     margin: 0;
@@ -20,7 +22,6 @@ body {
     flex-wrap: nowrap;
     flex-flow: column;
     align-items: center;
-    gap: 10px;
 }
 
 #board {
@@ -60,8 +61,6 @@ button {
 
 #instructions {
     white-space: pre;
-    border: 1px solid var(--border-color);
     padding-left: 0px;
-    padding-right: 5px; 
-    padding-top: 0px;
+    padding-right: 70px;
 }
