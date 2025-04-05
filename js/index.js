@@ -78,8 +78,10 @@ function spanCount(arr, index){
     if (arr.length < 1 || index >= arr.length || index < 0){
         return
     }
-    const rightRangeToCheck = (index + lengthCondition - 1) >= arr.length ? arr.length - 1 : index + lengthCondition - 1;
-    const leftRangeToCheck = (index - (lengthCondition - 1)) < 0 ? 0 : (index - (lengthCondition - 1));
+    // Checks at most `lengthCondition` more cells to both left and right of the index.
+    // In Gomoku, if either left or right side has 5 more identical stones, it means that the line is at least 6 stones long, rendering that whole line invalid regardless of the line's actual length.
+    const rightRangeToCheck = (index + lengthCondition - 1) >= arr.length ? (arr.length - 1) : (index + lengthCondition);
+    const leftRangeToCheck = (index - (lengthCondition - 1)) <= 0 ? 0 : (index - lengthCondition);
     let rightRange = 0;
     let leftRange = 0;
     // count the consecutive stones on the left
