@@ -36,8 +36,22 @@ function updateBoard(e) {
         let row = e.target.getAttribute('data-row');
         e.target.innerText = isFirstPlayerTurn ? 1 : 0;
         boardProgress[row][col] = isFirstPlayerTurn ? 1 : 0;
-        isFirstPlayerTurn = !isFirstPlayerTurn;
+        // isFirstPlayerTurn = !isFirstPlayerTurn;
+        switchPlayer();
     }
 }
+
+function switchPlayer(){
+    isFirstPlayerTurn = !isFirstPlayerTurn;
+    clearTimeout(clock);
+    if (isFirstPlayerTurn){
+        p1TimeLeft++;
+        countingDown();
+    }else {
+        p2TimeLeft++;
+        countingDown();
+    }
+}
+
 // Call createRows when the page loads
 window.onload = initTable;
