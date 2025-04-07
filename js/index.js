@@ -17,7 +17,7 @@ function initTable() {
             // Create a button element
             const button = document.createElement("button");
             button.classList.add("cell-button"); // Add a CSS class for styling
-            button.innerText = "-1"; // Set initial text for the button
+            button.innerText = ""; // The game checks the custom attribute 'data-claimer' instead of the inner text
             button.setAttribute('data-row', `${i}`);
             button.setAttribute('data-col', `${j}`);
             button.setAttribute('data-claimer', `${-1}`);
@@ -139,22 +139,20 @@ function checkVictory(row, col) {
 // Update the board when a cell button is clicked
 function updateBoard(e) {
     const button = e.target;
-    if (+button.innerText === -1) { // unary plus operator to cast string to int
+    if (+button.getAttribute('data-claimer') === -1) { // unary plus operator to cast string to int
         // console.log(button.innerText);
         let col = +button.getAttribute('data-col'); // unary plus operator to cast string to int
         let row = +button.getAttribute('data-row'); // unary plus operator to cast string to int
-        button.innerText = isFirstPlayerTurn ? 1 : 0;
-        boardProgress[row][col] = isFirstPlayerTurn ? 1 : 0;
 
         if (isFirstPlayerTurn) {
-            rootVariable.style.setProperty('--bg', '#FFFFFF')
-        } else {
-            rootVariable.style.setProperty('--bg', '#000000')
-        }
-
-        if (isFirstPlayerTurn) {
+            button.setAttribute("data-claimer", "1");
+            boardProgress[row][col] = 1;
+            rootVariable.style.setProperty('--bg', '#FFFFFF');
             button.style.backgroundColor = '#000000';
         } else {
+            button.setAttribute("data-claimer", "0");
+            boardProgress[row][col] = 0;
+            rootVariable.style.setProperty('--bg', '#000000');
             button.style.backgroundColor = '#FFFFFF';
         }
 
