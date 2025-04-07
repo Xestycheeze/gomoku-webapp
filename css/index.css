@@ -1,19 +1,22 @@
 /* Global variables for default colors */
 :root {
     --hover-color: black;
-    --board-color: bisque;
+    --board-color: 	#c68642;
     --border-color: black;
 }
 
 
 
 body {
-    font-family:'Times New Roman', Times, serif;
+    font-family: 'Times New Roman', Times, serif;
     margin: 0px;
     padding: 0px;
+    background-color: #29435b;
+    color: white;
 }
 
 h1 {
+    font-family: Impact, Arial, Helvetica, sans-serif;
     text-align: center;
 }
 #main {
@@ -27,9 +30,9 @@ h1 {
 
 /* Board to simulate Gomoku board */
 #board {
-    border: 5px solid var(--border-color);
-    padding: 5px;
-    background-color: var(--board-color);
+    border-radius: 7px;
+    padding: 10px;
+    background: linear-gradient(to right bottom,#ce8b5c, #bd7b4d, #ca7340, #ca7340, #ad7044, #ce8b5c);
 }
 
 button {
@@ -49,8 +52,8 @@ button {
 
 #myTable {
     width: 50px;
-    background-color: var(--board-color);
-    border: 5px solid ;
+    background: linear-gradient(to right bottom, #c78657, #ca7d46, #bb6a3b, #bb6a3b, #ca7d46, #c78657);
+    border: 5px solid var(--border-color);
     padding: 0px;
     border-collapse: collapse;
 }
