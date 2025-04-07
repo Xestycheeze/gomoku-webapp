@@ -22,12 +22,48 @@ button {
 #myTable {
     background-color: bisque;
     border: 10px solid darkgrey;
-    padding: 0px;
+    padding: 0;
     border-collapse: collapse;
 }
 
 #myTable td {
-    padding: 0px;
+    padding: 0;
     background-image: url("grid.svg");
     background-position: center;
+}
+
+/* #myTable background color span shrinks if tried to rotate the images with absolute positioning. Using rotated duplicated images as a band-aid solution*/
+#myTable tr:first-child td{
+    background-image: url("edge.svg");
+}
+#myTable td:first-child {
+    background-image: url("edge-e.svg");
+}
+#myTable tr:last-child td {
+    background-image: url("edge-s.svg");
+}
+#myTable td:last-child {
+    background-image: url("edge-w.svg");
+}
+
+#myTable tr:first-child td:first-child{
+    background-image: url("corner.svg");
+}
+
+#myTable tr:first-child td:last-child{
+    background-image: url("corner.svg");
+    position: absolute;
+    rotate: 90deg;
+}
+
+#myTable tr:last-child td:last-child{
+    background-image: url("corner.svg");
+    position: absolute;
+    rotate: 180deg;
+}
+
+#myTable tr:last-child td:first-child{
+    background-image: url("corner.svg");
+    position: absolute;
+    rotate: 270deg;
 }
