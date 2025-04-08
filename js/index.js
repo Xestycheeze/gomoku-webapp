@@ -173,3 +173,4 @@ function updateBoard(e) {
 
 // Call createRows when the page loads
 window.onload = initTable;
+
