@@ -225,6 +225,7 @@ function resetTimer() {
 
     isFirstPlayerTurn = true;
     rootVariable.style.setProperty('--bg', '#000000');
+    unclaimedCellCount = boardWidth * boardWidth;
 }
 
 function switchPlayer(){
