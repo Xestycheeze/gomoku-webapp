@@ -2,6 +2,11 @@
 :root {
     --border-color: #000000;
     --bg: black;
+
+    --p1TimerBGcolor: bisque;
+    --p1Bordercolor: bisque;
+    --p2TimerBGcolor: bisque;
+    --p2Bordercolor: bisque;
 }
 
 body {
@@ -27,6 +32,10 @@ button {
     background-color: var(--bg);
     opacity: 50%;
     border: 2px solid aqua;
+}
+
+.cell-button:disabled {
+    pointer-events: none;
 }
 
 #myTable {
@@ -92,6 +101,37 @@ h1 {
     border-radius: 7px;
     padding: 10px;
     background: linear-gradient(to right bottom,#ce8b5c, #bd7b4d, #ca7340, #ca7340, #ad7044, #ce8b5c);
+}
+#p1timer {
+    background: var(--p1TimerBGcolor);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    font-size: 50px;
+    height: 50px;
+    width: 120px;
+    color: aqua;
+    border: 2px solid var(--p1Bordercolor);
+}
+
+#p2timer {
+    background: var(--p2TimerBGcolor);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    font-size: 50px;
+    height: 50px;
+    width: 120px;
+    color: aqua;
+    border: 2px solid var(--p2Bordercolor);
+}
+
+#restartButton {
+    height: 50px;
+    width: 120px;
+    font-size: 20px;
 }
 
 /* Instructions text under table */
