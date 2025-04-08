@@ -2,7 +2,6 @@
 :root {
     --border-color: #000000;
     --bg: black;
-
     --p1TimerBGcolor: bisque;
     --p1Bordercolor: bisque;
     --p2TimerBGcolor: bisque;
@@ -28,16 +27,14 @@ h1 {
 
 /* Gomoku table stone placement */
 #board button {
-    width: 40px;
-    height: 40px;
+    width: 37px;
+    height: 37px;
     font-size: 0;
     border-style: none;
     border-radius: 25px;
     color: blue;
     cursor: pointer;
     background-color: transparent;
-    margin-top: -3px;
-    
 }
 
 /* When hovering a valid grid on the board */
@@ -56,12 +53,10 @@ h1 {
     width: 50px;
     background: linear-gradient(to right bottom, #c78657, #ca7d46, #bb6a3b, #bb6a3b, #ca7d46, #c78657);
     border: 5px solid var(--border-color);
-    padding: 0;
     border-collapse: collapse;
 }
 
 #myTable td {
-    padding: 0;
     background-image: url("grid.svg");
     background-position: center;
 }
@@ -84,14 +79,10 @@ h1 {
     background-image: url("corner.svg");
 }
 #myTable tr:first-child td:last-child{
-    background-image: url("corner-3.svg");
-    position: absolute;
-    rotate: 180deg;
+    background-image: url("corner-1.svg");
 }
 #myTable tr:last-child td:last-child{
-    background-image: url("corner.svg");
-    position: absolute;
-    rotate: 180deg;
+    background-image: url("corner-2.svg");
 }
 #myTable tr:last-child td:first-child{
     background-image: url("corner-3.svg");
