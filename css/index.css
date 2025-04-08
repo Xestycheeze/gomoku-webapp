@@ -51,9 +51,9 @@ button {
 }
 
 #myTable tr:first-child td:last-child{
-    background-image: url("corner.svg");
+    background-image: url("corner-3.svg");
     position: absolute;
-    rotate: 90deg;
+    rotate: 180deg;
 }
 
 #myTable tr:last-child td:last-child{
@@ -63,7 +63,5 @@ button {
 }
 
 #myTable tr:last-child td:first-child{
-    background-image: url("corner.svg");
-    position: absolute;
-    rotate: 270deg;
+    background-image: url("corner-3.svg");
 }
