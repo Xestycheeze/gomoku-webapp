@@ -41,6 +41,33 @@ function updateBoard(e) {
     }
 }
 
+function resetBoard() {
+    const table = document.getElementById('myTable');
+    const cells = table.getElementsByTagName('td');
+
+    for (let cell of cells) {
+        cell.innerHTML = '-1'
+        cell.setAttribute('data-claimer', '-1');
+    }
+    boardProgress = Array.from(Array(15), () => new Array(15).fill(-1));
+    resetTimer();
+}
+
+function resetTimer() {
+    clearTimeout(clock);
+    p1TimeLeft = startingMinutes * 60;
+    p1Timer.innerHTML = "1:00";
+    rootVariable.style.setProperty('--p1TimerBGcolor', 'bisque');
+    rootVariable.style.setProperty('--p1Bordercolor', 'bisque');
+
+    p2TimeLeft = startingMinutes * 60;
+    p2Timer.innerHTML = "1:00";
+    rootVariable.style.setProperty('--p2TimerBGcolor', 'bisque');
+    rootVariable.style.setProperty('--p2Bordercolor', 'bisque');
+
+    playerTurnText.innerHTML = "Place down a piece to start playing!"
+}
+
 function switchPlayer(){
     isFirstPlayerTurn = !isFirstPlayerTurn;
     clearTimeout(clock);

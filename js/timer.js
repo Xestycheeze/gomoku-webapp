@@ -8,10 +8,10 @@ const p2Timer = document.getElementById('p2timer');
 const playerTurnText = document.getElementById('playerTurn');
 
 let clock;
-function startClock() {
-    startButton.disabled = true;
-    countingDown()
-}
+// function startClock() {
+//     startButton.disabled = true;
+//     countingDown()
+// }
 
 function countingDown() {
     if (isFirstPlayerTurn) {
@@ -43,18 +43,18 @@ function countingDown() {
         } else {
             p2TimeLeft--;
         }
-        
+
         const minutes = Math.floor(p2TimeLeft / 60);
         let seconds = p2TimeLeft % 60;
         seconds = seconds < 10 ? '0' + seconds : seconds;
-    
+
         p2Timer.innerHTML = `${minutes}:${seconds}`;
 
         clock = setTimeout(countingDown, 1000);
     }
 }
 
-const startButton = document.getElementById('StartGame');
+const restart = document.getElementById('restartButton');
 
-startButton.addEventListener('click', startClock);
+restart.addEventListener('click', resetBoard);
 

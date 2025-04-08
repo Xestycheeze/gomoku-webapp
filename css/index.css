@@ -31,7 +31,7 @@
     border: 2px solid var(--p2Bordercolor);
 }
 
-#StartGame {
+#restartButton {
     height: 50px;
     width: 120px;
     font-size: 20px;
