@@ -33,6 +33,10 @@ button {
     border: 2px solid aqua;
 }
 
+.cell-button:disabled {
+    pointer-events: none;
+}
+
 #myTable {
     width: 50px;
     background: linear-gradient(to right bottom, #c78657, #ca7d46, #bb6a3b, #bb6a3b, #ca7d46, #c78657);

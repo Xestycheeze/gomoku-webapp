@@ -196,6 +196,9 @@ function resetTimer() {
     rootVariable.style.setProperty('--p2Bordercolor', 'bisque');
 
     playerTurnText.innerHTML = "Place down a piece to start playing!"
+
+    isFirstPlayerTurn = true;
+    rootVariable.style.setProperty('--bg', '#FFFFFF');
 }
 
 function switchPlayer(){
