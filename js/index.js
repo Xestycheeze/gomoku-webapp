@@ -4,7 +4,7 @@ const boardWidth = 15;
 let unclaimedCellCount = boardWidth * boardWidth;
 let isFirstPlayerTurn = true; // Gomoku is a 2-player game. Use boolean to indicate turns
 
-
+const rootVariable = document.documentElement;
 // Function to create 15 rows
 function initTable() {
     const tableBody = document.getElementById('myTable').getElementsByTagName('tbody')[0];
@@ -13,13 +13,19 @@ function initTable() {
         const newRow = tableBody.insertRow();
         for (let j = 0; j < boardWidth; j++) {
             const cell1 = newRow.insertCell(-1);
-            cell1.innerHTML = `-1`;
-            cell1.setAttribute('data-row', `${i}`)
-            cell1.setAttribute('data-col', `${j}`)
-            cell1.setAttribute('data-claimer', `${-1}`)
-            cell1.onclick = updateBoard;
-        }
 
+            // Create a button element
+            const button = document.createElement("button");
+            button.classList.add("cell-button"); // Add a CSS class for styling
+            button.innerText = ""; // The game checks the custom attribute 'data-claimer' instead of the inner text
+            button.setAttribute('data-row', `${i}`);
+            button.setAttribute('data-col', `${j}`);
+            button.setAttribute('data-claimer', `${-1}`);
+            button.onclick = updateBoard; // Attach the click event handler
+
+            // Append the button to the cell
+            cell1.appendChild(button);
+        }
     }
     // it's more elegant to make array from the values captured from HTML, but it's too slow, so
     // instead, just hard code initializing internal JS reference to the HTML table
@@ -84,7 +90,7 @@ function spanCount(arr, index){
     const leftRangeToCheck = (index - (lengthCondition - 1)) <= 0 ? 0 : (index - lengthCondition);
     let rightRange = 0;
     let leftRange = 0;
-    // count the consecutive stones on the left
+    // count the consecutive stones on the right
     for (let i = index; i < rightRangeToCheck; i++){
         if (arr[i] !== -1 && arr[i] === arr[i+1]){
             rightRange++;
@@ -130,13 +136,26 @@ function checkVictory(row, col) {
     return false;
 }
 
+// Update the board when a cell button is clicked
 function updateBoard(e) {
-    if (+e.target.innerText === -1){ // unary plus operator to cast string to int
-        // console.log(e.target.innerText);
-        let col = +e.target.getAttribute('data-col'); // unary plus operator to cast string to int
-        let row = +e.target.getAttribute('data-row'); // unary plus operator to cast string to int
-        e.target.innerText = isFirstPlayerTurn ? 1 : 0;
-        boardProgress[row][col] = isFirstPlayerTurn ? 1 : 0;
+    const button = e.target;
+    if (+button.getAttribute('data-claimer') === -1) { // unary plus operator to cast string to int
+        // console.log(button.innerText);
+        let col = +button.getAttribute('data-col'); // unary plus operator to cast string to int
+        let row = +button.getAttribute('data-row'); // unary plus operator to cast string to int
+
+        if (isFirstPlayerTurn) {
+            button.setAttribute("data-claimer", "1");
+            boardProgress[row][col] = 1;
+            rootVariable.style.setProperty('--bg', '#FFFFFF');
+            button.style.backgroundColor = '#000000';
+        } else {
+            button.setAttribute("data-claimer", "0");
+            boardProgress[row][col] = 0;
+            rootVariable.style.setProperty('--bg', '#000000');
+            button.style.backgroundColor = '#FFFFFF';
+        }
+
         if (checkVictory(row, col)) {
             if (isFirstPlayerTurn){
                 console.log("Player 1 won");
