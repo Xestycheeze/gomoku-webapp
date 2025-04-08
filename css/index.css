@@ -4,17 +4,12 @@
     --bg: black;
 }
 
-
-
 body {
     font-family: 'Times New Roman', Times, serif;
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     background-color: #29435b;
     color: white;
-}
-:root {
-    --bg: black;
 }
 
 button {
@@ -64,22 +59,20 @@ button {
 #myTable tr:first-child td:first-child{
     background-image: url("corner.svg");
 }
-
 #myTable tr:first-child td:last-child{
     background-image: url("corner-3.svg");
     position: absolute;
     rotate: 180deg;
 }
-
 #myTable tr:last-child td:last-child{
     background-image: url("corner.svg");
     position: absolute;
     rotate: 180deg;
 }
-
 #myTable tr:last-child td:first-child{
     background-image: url("corner-3.svg");
 }
+
 h1 {
     font-family: Impact, Arial, Helvetica, sans-serif;
     text-align: center;
