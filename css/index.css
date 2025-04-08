@@ -1,7 +1,6 @@
 /* Global variables for default colors */
 :root {
-    --hover-color: black;
-    --border-color: black;
+    --border-color: #000000;
 }
 
 
@@ -18,6 +17,7 @@ h1 {
     font-family: Impact, Arial, Helvetica, sans-serif;
     text-align: center;
 }
+
 #main {
     font-size: 17px;
     font-weight: bold;
@@ -34,38 +34,15 @@ h1 {
     background: linear-gradient(to right bottom,#ce8b5c, #bd7b4d, #ca7340, #ca7340, #ad7044, #ce8b5c);
 }
 
-button {
-    width: 40px;
-    height: 40px;
-    font-size: 0px;
-    border-style: none;
-    border-radius: 25px;
-    cursor: pointer;
-    background-color: transparent;
-}
-
-.cell-button:hover {
-    background-color: var(--hover-color);
-    opacity: 1;
-}
-
 #myTable {
     width: 50px;
     background: linear-gradient(to right bottom, #c78657, #ca7d46, #bb6a3b, #bb6a3b, #ca7d46, #c78657);
     border: 5px solid var(--border-color);
-    padding: 0px;
-    border-collapse: collapse;
-}
-
-#myTable td {
-    padding: 0px;
-    background-image: url("grid.svg");
-    background-position: center;
 }
 
 /* Instructions text under table */
 #instructions {
-    white-space: pre;
-    padding-left: 0px;
-    padding-right: 50px;
+    white-space: pre-wrap;
+    margin-left: auto;
+    margin-right: auto;
 }
