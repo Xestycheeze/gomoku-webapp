@@ -9,6 +9,7 @@
     --p2Bordercolor: bisque;
 }
 
+/* Default stuff */
 body {
     font-family: 'Times New Roman', Times, serif;
     margin: 0;
@@ -17,7 +18,16 @@ body {
     color: white;
 }
 
-button {
+/* Gomoku title */
+h1 {
+    font-family: Impact, Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin: 10px;
+}
+
+
+/* Gomoku table stone placement */
+#board button {
     width: 40px;
     height: 40px;
     font-size: 0;
@@ -26,9 +36,12 @@ button {
     color: blue;
     cursor: pointer;
     background-color: transparent;
+    margin-top: -3px;
+    
 }
 
-.cell-button:hover {
+/* When hovering a valid grid on the board */
+#board .cell-button:hover {
     background-color: var(--bg);
     opacity: 50%;
     border: 2px solid aqua;
@@ -38,6 +51,7 @@ button {
     pointer-events: none;
 }
 
+/* Inner board (Main play area) */
 #myTable {
     width: 50px;
     background: linear-gradient(to right bottom, #c78657, #ca7d46, #bb6a3b, #bb6a3b, #ca7d46, #c78657);
@@ -45,6 +59,7 @@ button {
     padding: 0;
     border-collapse: collapse;
 }
+
 #myTable td {
     padding: 0;
     background-image: url("grid.svg");
@@ -82,11 +97,7 @@ button {
     background-image: url("corner-3.svg");
 }
 
-h1 {
-    font-family: Impact, Arial, Helvetica, sans-serif;
-    text-align: center;
-}
-
+/* Default for everything inside main */
 #main {
     font-size: 17px;
     font-weight: bold;
@@ -102,36 +113,57 @@ h1 {
     padding: 10px;
     background: linear-gradient(to right bottom,#ce8b5c, #bd7b4d, #ca7340, #ca7340, #ad7044, #ce8b5c);
 }
+
+/* Player 1 and 2 + restart button */ 
+#nameplates {
+    display: flex;
+    gap: 150px;
+    margin: -10px;
+}
+
+#restartButton {
+    border: transparent;
+    background: transparent;
+    cursor: pointer;
+}
+
+#restartButton:hover {
+    background-color:#345473;
+    border-radius: 30px;
+}
+
+/* Timers */
+#timers {
+    color: black;
+    display: flex;
+    text-align: center;
+    margin: -5px;
+}
+
+#playerTurn {
+    color: white;
+    width: 300px;
+    padding-top: 10px
+}
 #p1timer {
     background: var(--p1TimerBGcolor);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin: 10px;
-    font-size: 50px;
-    height: 50px;
-    width: 120px;
-    color: aqua;
     border: 2px solid var(--p1Bordercolor);
+    margin: 10px;
+    padding: 10px;
+    width: 80px;
+    height: 40px;
+    font-size: 40px;
+    
 }
 
 #p2timer {
     background: var(--p2TimerBGcolor);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin: 10px;
-    font-size: 50px;
-    height: 50px;
-    width: 120px;
-    color: aqua;
     border: 2px solid var(--p2Bordercolor);
-}
-
-#restartButton {
-    height: 50px;
-    width: 120px;
-    font-size: 20px;
+    margin: 10px;
+    padding: 10px;
+    width: 80px;
+    height: 40px;
+    font-size: 40px;
 }
 
 /* Instructions text under table */

@@ -16,7 +16,6 @@ let clock;
 function countingDown() {
     if (isFirstPlayerTurn) {
         playerTurnText.innerHTML = "Player 1's turn!"
-        rootVariable.style.setProperty('--p1TimerBGcolor', 'black');
         rootVariable.style.setProperty('--p2TimerBGcolor', 'bisque');
         rootVariable.style.setProperty('--p1Bordercolor', 'red');
         rootVariable.style.setProperty('--p2Bordercolor', 'bisque');
@@ -26,6 +25,7 @@ function countingDown() {
             playerTurnText.innerHTML = "Player 2 wins!";
             disableButtons();
             alert('Time out! Player 2 wins!')
+            return
         } else {
             p1TimeLeft--;
             const minutes = Math.floor(p1TimeLeft / 60);
@@ -37,7 +37,6 @@ function countingDown() {
         }
     } else {
         playerTurnText.innerHTML = "Player 2's turn!"
-        rootVariable.style.setProperty('--p2TimerBGcolor', 'white');
         rootVariable.style.setProperty('--p1TimerBGcolor', 'bisque');
         rootVariable.style.setProperty('--p2Bordercolor', 'red');
         rootVariable.style.setProperty('--p1Bordercolor', 'bisque');
@@ -47,6 +46,7 @@ function countingDown() {
             playerTurnText.innerHTML = "Player 1 wins!";
             disableButtons();
             alert('Time out! Player 1 wins!')
+            return
         } else {
             p2TimeLeft--;
             const minutes = Math.floor(p2TimeLeft / 60);

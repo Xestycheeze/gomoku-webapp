@@ -9,6 +9,16 @@
 <body>
 <h1>Gomoku</h1>
 <div id="main">
+    <div id="nameplates">
+        <p>Player 1</p>
+        <button id="restartButton"><img src="./css/restart.svg"></button>
+        <p>Player 2</p>
+    </div>
+    <div id="timers">
+        <p id="p1timer">1:00</p>
+        <p id="playerTurn">Place down a piece to start playing!</p>
+        <p id="p2timer">1:00</p>
+    </div>
     <div id="board">
         <table id="myTable" border="0">
             <thead>
@@ -18,10 +28,7 @@
             </tbody>
         </table>
     </div>
-    <p id="p1timer">1:00</p>
-    <p id="p2timer">1:00</p>
-    <p id="playerTurn">Place down a piece to start playing!</p>
-    <button id="restartButton">Restart</button>
+    
     <script src="./js/timer.js"></script>
     <section id="instructions">
     <p>How to Play:
