@@ -215,3 +215,4 @@ function switchPlayer(){
 
 // Call createRows when the page loads
 window.onload = initTable;
+

@@ -2,6 +2,7 @@
 :root {
     --border-color: #000000;
     --bg: black;
+
     --p1TimerBGcolor: bisque;
     --p1Bordercolor: bisque;
     --p2TimerBGcolor: bisque;
@@ -101,7 +102,6 @@ h1 {
     padding: 10px;
     background: linear-gradient(to right bottom,#ce8b5c, #bd7b4d, #ca7340, #ca7340, #ad7044, #ce8b5c);
 }
-
 #p1timer {
     background: var(--p1TimerBGcolor);
     display: inline-flex;
