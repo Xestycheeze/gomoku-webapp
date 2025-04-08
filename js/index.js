@@ -149,27 +149,52 @@ function updateBoard(e) {
             boardProgress[row][col] = 1;
             rootVariable.style.setProperty('--bg', '#FFFFFF');
             button.style.backgroundColor = '#000000';
+            button.disabled = true;
         } else {
             button.setAttribute("data-claimer", "0");
             boardProgress[row][col] = 0;
             rootVariable.style.setProperty('--bg', '#000000');
             button.style.backgroundColor = '#FFFFFF';
+            button.disabled = true;
         }
+
+        unclaimedCellCount--;
 
         if (checkVictory(row, col)) {
             if (isFirstPlayerTurn){
+                clearTimeout(clock);
                 console.log("Player 1 won");
+                playerTurnText.innerHTML = "Player 1 wins!";
+                disableButtons();
+                alert("Player 1 wins!");
             } else {
+                clearTimeout(clock);
                 console.log("Player 2 won");
+                playerTurnText.innerHTML = "Player 2 wins!";
+                disableButtons();
+                alert("Player 2 wins!")
             }
+        } else if (unclaimedCellCount <= 0){
+                clearTimeout(clock);
+                console.log("Draw");
+                playerTurnText.innerHTML = "It's a draw!";
+                disableButtons();
+                alert("It's a draw!");
+        } else {
+            switchPlayer();
         }
-        unclaimedCellCount--;
-        if (unclaimedCellCount <= 0){
-            console.log("Draw");
-        }
-        switchPlayer();
     }
 }
+
+function disableButtons () {
+    const table = document.getElementById('myTable');
+    const cells = table.getElementsByClassName('cell-button');
+
+    for (let cell of cells) {
+        cell.disabled = true;
+    }
+}
+
 function resetBoard() {
     const table = document.getElementById('myTable');
     const cells = table.getElementsByClassName('cell-button');
@@ -178,6 +203,7 @@ function resetBoard() {
         // cell.innerHTML = '-1' // Board now initialized with empty text
         cell.setAttribute('data-claimer', '-1');
         cell.removeAttribute('style');
+        cell.disabled = false;
     }
     boardProgress = Array.from(Array(boardWidth), () => new Array(boardWidth).fill(-1));
     resetTimer();
@@ -198,7 +224,7 @@ function resetTimer() {
     playerTurnText.innerHTML = "Place down a piece to start playing!"
 
     isFirstPlayerTurn = true;
-    rootVariable.style.setProperty('--bg', '#FFFFFF');
+    rootVariable.style.setProperty('--bg', '#000000');
 }
 
 function switchPlayer(){
@@ -215,4 +241,3 @@ function switchPlayer(){
 
 // Call createRows when the page loads
 window.onload = initTable;
-
